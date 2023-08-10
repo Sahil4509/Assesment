@@ -1,0 +1,77 @@
+public interface Employee {
+
+void doWork();
+
+}
+
+public class Manager implements Employee {
+
+private Accounts accounts;
+
+private Cashier cashier;
+
+private Security security;
+
+private Admin admin;
+
+@Autowired
+
+public Manager(Accounts accounts, Cashier cashier, Security security, Admin admin) {
+
+this.accounts = accounts;
+
+this.cashier = cashier;
+
+this.security = security;
+
+this.admin = admin;
+
+}
+
+// Other methods and doWork implementation
+
+}
+
+@Configuration
+
+@ComponentScan(basePackages = "your.package.name")
+
+public class Config {
+
+// Configuration details if needed
+
+}
+
+public class Manager implements Employee {
+
+// ...
+
+public void callMeeting() {
+
+System.out.println("Calling a meeting to share department information:");
+
+accounts.doWork();
+
+cashier.doWork();
+
+security.doWork();
+
+admin.doWork();
+
+}
+
+}
+
+public class MainApp {
+
+public static void main(String[] args) {
+
+ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+Manager manager = context.getBean(Manager.class);
+
+manager.callMeeting();
+
+}
+
+}
