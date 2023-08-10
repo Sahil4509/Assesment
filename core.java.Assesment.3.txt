@@ -1,0 +1,164 @@
+
+
+
+===============question2===================================
+package sahil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+public class Pojo {
+public  static void main(String[]args) {
+
+		class Product implements Comparable<Product> {
+		    private int productId;
+		    private String productName;
+		    private String productType;
+		    private String productCategory;
+		    private int productPrice;
+
+		    public Product(int productId, String productName, String productType, String productCategory, int productPrice) {
+		        this.productId = productId;
+		        this.productName = productName;
+		        this.productType = productType;
+		        this.productCategory = productCategory;
+		        this.productPrice = productPrice;
+		    }
+
+		    public int getProductId() {
+		        return productId;
+		    }
+
+		    public String getProductName() {
+		        return productName;
+		    }
+
+		    public String getProductType() {
+		        return productType;
+		    }
+
+		    public String getProductCategory() {
+		        return productCategory;
+		    }
+
+		    public int getProductPrice() {
+		        return productPrice;
+		    }
+
+		    @Override
+		    public int compareTo(Product other) {
+		        // Sort by product category first
+		        int categoryComparison = this.productCategory.compareTo(other.productCategory);
+		        if (categoryComparison != 0) {
+		            return categoryComparison;
+		        }
+
+		        // If product categories are the same, sort by product price
+		        return Integer.compare(this.productPrice, other.productPrice);
+		    }
+		}
+
+		class ProductSort {
+		    public static void main(String[] args) {
+		        Scanner scanner = new Scanner(System.in);
+		        List<Product> productList = new ArrayList<>();
+
+		        System.out.println("Enter the number of products:");
+		        int numProducts = scanner.nextInt();
+		        scanner.nextLine(); // Consume the newline character
+
+		        for (int i = 0; i < numProducts; i++) {
+		            System.out.println("Enter product details for product " + (i + 1) + ":");
+		            System.out.println("Enter product id:");
+		            int productId = scanner.nextInt();
+		            scanner.nextLine(); // Consume the newline character
+
+		            System.out.println("Enter product name:");
+		            String productName = scanner.nextLine();
+
+		            System.out.println("Enter product type:");
+		            String productType = scanner.nextLine();
+
+		            System.out.println("Enter product category:");
+		            String productCategory = scanner.nextLine();
+
+		            System.out.println("Enter product price:");
+		            int productPrice = scanner.nextInt();
+		            scanner.nextLine(); // Consume the newline character
+
+		            Product product = new Product(productId, productName, productType, productCategory, productPrice);
+		            productList.add(product);
+		        }
+
+		        Collections.sort(productList);
+
+		        System.out.println("Sorted product details:");
+		        for (Product product : productList) {
+		            System.out.println("Product ID: " + product.getProductId());
+		            System.out.println("Product Name: " + product.getProductName());
+		            System.out.println("Product Type: " + product.getProductType());
+		            System.out.println("Product Category: " + product.getProductCategory());
+		            System.out.println("Product Price: " + product.getProductPrice());
+		            System.out.println();
+		        }
+		    }
+		}
+
+	}
+
+}
+
+
+
+
+
+============================================question1================================
+
+class Rectangle{
+    double length,width;
+    Rectangle()
+    {
+        length=0;
+        width=0;
+    }
+    public void setrect(double length,double width)
+    {
+        this.length=length;
+        this.width=width;
+    }
+    public double area()
+    {
+        return length*width;
+    }
+}
+class Box extends Rectangle{
+    double height;
+    Box()
+    {
+        height=0;
+    }
+    void setBox(double length,double width,double height)
+    {
+        setrect(length,width);
+        this.height=height;
+    }
+    double volume()
+    {
+        return height*area();
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        Box b=new Box();
+        b.setBox(10,20,30);
+        System.out.println(b.volume());
+        
+    }
+}
+
+
+
+
+
+
